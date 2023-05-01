@@ -12,15 +12,19 @@ const data = reactive({
     loggedToParent : true,
     callRegister : false,
 });
+
+//props
 const props = defineProps({
     logged:{
         type : Boolean,
         required : true,
     }
 })
+
 //emit event
 const emit = defineEmits(['loggedToParent']);
 
+//action
 const loginUser = () =>{
     axios.post('/api/login', data.user)
         .then(res => {
@@ -41,9 +45,12 @@ const loginUser = () =>{
         })
         .catch(err => {console.log("login user",err);});
 }
+
+//get data from child
 const getIsRegister = (isRegister) =>{
     data.callRegister = !isRegister;
 }
+
 </script>
 <template>
     <!-- form for login -->
