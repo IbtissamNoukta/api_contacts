@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    //
+    //jwt
      /**
      * Create a new AuthController instance.
      *

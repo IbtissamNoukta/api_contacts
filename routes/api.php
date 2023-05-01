@@ -21,9 +21,10 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('/contacts', ContactController::class);
 
 Route::group(['middleware' => ['auth:sanctum']],function(){
+    //use this root inside middleware or use constructor
+    Route::apiResource('/contacts', ContactController::class);
     Route::get('profile',[UserController::class , 'profile']);
     Route::get('logout',[UserController::class , 'logout']);
 });

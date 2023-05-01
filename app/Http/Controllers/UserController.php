@@ -10,7 +10,7 @@ use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
-    //
+    //sanctum
     public function register(Request $request){
         $this->validate($request,[
             'name' => 'required',
@@ -38,7 +38,7 @@ class UserController extends Controller
             if(Hash::check($request->password, $user->password)){
                 $token = $user->createToken('auth_token');
                 return response()->json([
-                    'message' => 'connected succefelly',
+                    'message' => 'connected successfully',
                     'token' => $token->plainTextToken
                     ]);
             }else{
@@ -59,7 +59,7 @@ class UserController extends Controller
     public function logout(){
         auth()->user()->tokens()->delete();
         return response()->json([
-            'message' => 'logout succefelly'
+            'message' => 'logout successfully'
         ]);
     }
 }
