@@ -17,5 +17,7 @@
         <div id="app"></div>
 
 	@vite('resources/js/app.js')
+    {{-- for delete confirmation --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
