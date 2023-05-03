@@ -36,7 +36,7 @@ const getContacts = () =>{
         .catch(err => {console.log("get contacts",err);});
 }
 const addContact = (contact) =>{
-    axios.post('/api/contacts', config , contact)
+    axios.post('/api/contacts', contact, config )
         .then(res => {getContacts();})
         .catch(err => {console.log("post contacts",err);});
 }
@@ -46,9 +46,14 @@ const getContact = (id) =>{
         .catch(err => {console.log("get contacts/id",err);});
 }
 const updateContact = (contact) =>{
-    axios.put('/api/contacts/'+contact.id, config, contact)
+    axios.put('/api/contacts/'+contact.id, contact, config)
         .then(res => {getContacts();})
         .catch(err => {console.log("put contacts/id",err);});
+    data.contact = {
+        id : '',
+        name : '',
+        tel : ''
+    };
 }
 const deleteContact = (id) =>{
     //sweetalert2 biblio
@@ -76,7 +81,7 @@ const deleteContact = (id) =>{
 }
 
 //actions
-const getProfile = (token) =>{
+const getProfile = () =>{
     axios.get('/api/profile', config)
         .then(res => {data.profile = res.data.data})
         .catch(err => {console.log("get profil",err);});
@@ -104,7 +109,7 @@ const storeContact = () =>{
         tel : ''
     };
 }
-//gettingid to update a contact
+//getting id to update a contact
 const editContact = (id) =>{
     getContact(id);
 }
